@@ -1,10 +1,10 @@
-import { createConnection } from "mysql";
+import { createConnection } from "mysql2";
 export const connection = createConnection({
-  host: "localhost",
+  host: "db",
   user: "root",
-  password: "161926",
-  database: "pbl_web",
-  port: 3307
+  password: "root",
+  database: "new_schema_for_docker_test",
+  port: 3306,
 });
 
 export async function connectionBD() {
@@ -13,12 +13,8 @@ export async function connectionBD() {
     console.time("connection");
     connection.connect();
     console.timeEnd("connection");
-    console.log("CONEXÃO BEM SUCEDIDA...");
   } catch (err) {
     console.error("FALHA NA CONEXÃO COM O BANCO DE DADOS...");
   }
+  console.log("CONEXÃO BEM SUCEDIDA...");
 }
-
-
-
-
