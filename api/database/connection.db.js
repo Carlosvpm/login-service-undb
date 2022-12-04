@@ -4,6 +4,7 @@ export const connection = createConnection({
   user: "root",
   password: "161926",
   database: "pbl_web",
+  port: 3307
 });
 
 export async function connectionBD() {

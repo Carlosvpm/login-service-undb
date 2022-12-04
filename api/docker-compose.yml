@@ -1,0 +1,26 @@
+
+version: '3.1'
+
+services:
+  db:
+    container_name: database
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: new_schema_for_docker_test
+    ports:
+      - "3307:3306"
+
+  api: 
+    depends_on:
+      - db
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - "7777:7777"
+    volumes:
+      - '.:/usr/app'
